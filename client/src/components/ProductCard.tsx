@@ -43,12 +43,12 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     <div className="shadow-lg rounded-lg overflow-hidden">
       {/* IMAGE */}
       <Link href={`/products/${product.id}`}>
-        <div className="relative aspect-[2/3]">
+        <div className="relative aspect-[2/3] bg-white">
           <Image
             src={product.images[productTypes.color]}
             alt={product.name}
             fill
-            className="object-cover hover:scale-105 transition-all duration-300"
+            className="object-contain p-2 hover:scale-105 transition-all duration-300"
           />
         </div>
       </Link>
@@ -58,44 +58,23 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         <p className="text-sm text-gray-500">{product.shortDescription}</p>
         {/* PRODUCT TYPES */}
         <div className="flex items-center gap-4 text-xs">
-          {/* SIZES */}
+          {/* FLAVORS */}
           <div className="flex flex-col gap-1">
-            <span className="text-gray-500">Size</span>
-            <select
-              name="size"
-              id="size"
-              className="ring ring-gray-300 rounded-md px-2 py-1"
-              onChange={(e) =>
-                handleProductType({ type: "size", value: e.target.value })
-              }
-            >
-              {product.sizes.map((size) => (
-                <option key={size} value={size}>
-                  {size.toUpperCase()}
-                </option>
-              ))}
-            </select>
-          </div>
-          {/* COLORS */}
-          <div className="flex flex-col gap-1">
-            <span className="text-gray-500">Color</span>
-            <div className="flex items-center gap-2">
-              {product.colors.map((color) => (
+            <span className="text-gray-500">Flavor</span>
+            <div className="flex flex-wrap items-center gap-2">
+              {product.colors.map((flavor) => (
                 <div
                   className={`cursor-pointer border-1 ${
-                    productTypes.color === color
+                    productTypes.color === flavor
                       ? "border-gray-400"
                       : "border-gray-200"
-                  } rounded-full p-[1.2px]`}
-                  key={color}
+                  } rounded-md px-2 py-1`}
+                  key={flavor}
                   onClick={() =>
-                    handleProductType({ type: "color", value: color })
+                    handleProductType({ type: "color", value: flavor })
                   }
                 >
-                  <div
-                    className="w-[14px] h-[14px] rounded-full"
-                    style={{ backgroundColor: color }}
-                  />
+                  {flavor}
                 </div>
               ))}
             </div>

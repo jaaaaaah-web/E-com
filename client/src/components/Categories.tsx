@@ -1,12 +1,10 @@
 "use client";
 import {
-  Footprints,
-  Glasses,
-  Briefcase,
-  Shirt,
+  Coffee,
+  CupSoda,
+  Package,
+  Popcorn,
   ShoppingBasket,
-  Hand,
-  Venus,
 } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
@@ -17,39 +15,24 @@ const categories = [
     slug: "all",
   },
   {
-    name: "T-shirts",
-    icon: <Shirt className="w-4 h-4" />,
-    slug: "t-shirts",
+    name: "Coffee and Tea",
+    icon: <Coffee className="w-4 h-4" />,
+    slug: "coffe and tea",
   },
   {
-    name: "Shoes",
-    icon: <Footprints className="w-4 h-4" />,
-    slug: "shoes",
+    name: "Fruit Juice and Wine",
+    icon: <CupSoda className="w-4 h-4" />,
+    slug: "fruit juice and wine",
   },
   {
-    name: "Accessories",
-    icon: <Glasses className="w-4 h-4" />,
-    slug: "accessories",
+    name: "Ready To Eat Products",
+    icon: <Package className="w-4 h-4" />,
+    slug: "ready to eat products",
   },
   {
-    name: "Bags",
-    icon: <Briefcase className="w-4 h-4" />,
-    slug: "bags",
-  },
-  {
-    name: "Dresses",
-    icon: <Venus className="w-4 h-4" />,
-    slug: "dresses",
-  },
-  {
-    name: "Jackets",
-    icon: <Shirt className="w-4 h-4" />,
-    slug: "jackets",
-  },
-  {
-    name: "Gloves",
-    icon: <Hand className="w-4 h-4" />,
-    slug: "gloves",
+    name: "Chips",
+    icon: <Popcorn className="w-4 h-4" />,
+    slug: "chips",
   },
 ];
 

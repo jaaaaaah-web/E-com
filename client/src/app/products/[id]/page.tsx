@@ -11,7 +11,7 @@ const product: ProductType = {
   description:
     "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
   price: 59.9,
-  sizes: ["xs", "s", "m", "l", "xl"],
+  sizes: ["20ml", "50ml", "100ml"],
   colors: ["gray", "purple", "green"],
   images: {
     gray: "/products/1g.png",
@@ -68,8 +68,8 @@ const ProductPage = async ({
         {/* CARD INFO */}
         <div className="flex items-center gap-2 mt-4">
           <Image
-            src="/klarna.png"
-            alt="klarna"
+            src="/cod.png"
+            alt="cod"
             width={50}
             height={25}
             className="rounded-md"
@@ -82,8 +82,8 @@ const ProductPage = async ({
             className="rounded-md"
           />
           <Image
-            src="/stripe.png"
-            alt="stripe"
+            src="/gcash.png"
+            alt="gcash"
             width={50}
             height={25}
             className="rounded-md"

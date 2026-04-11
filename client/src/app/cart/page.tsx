@@ -149,9 +149,6 @@ const CartPage = () => {
                         Quantity: {item.quantity}
                       </p>
                       <p className="text-xs text-gray-500">
-                        Size: {item.selectedSize}
-                      </p>
-                      <p className="text-xs text-gray-500">
                         Color: {item.selectedColor}
                       </p>
                     </div>
