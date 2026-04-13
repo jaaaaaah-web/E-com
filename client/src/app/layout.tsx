@@ -16,8 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JAHCART - Best Clothes",
-  description: "JAHCART is the best place to find the best clothes",
+  title: "CVSRRC ",
+  description: "CVSRRC is the best place to find the best food.",
+  icons: {
+    icon: "/logo.png"
+  }
 };
 
 export default function RootLayout({
