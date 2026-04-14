@@ -5,111 +5,102 @@ const getData = async (): Promise<Product[]> => {
   return [
     {
       id: 1,
-      name: "Adidas CoreFit T-Shirt",
-      shortDescription:
-        "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-      description:
-        "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-      price: 39.9,
-      sizes: ["s", "m", "l", "xl", "xxl"],
-      colors: ["gray", "purple", "green"],
-      images: {
-        gray: "/products/1g.png",
-        purple: "/products/1p.png",
-        green: "/products/1gr.png",
-      },
+    name: "Ac Plant",
+    shortDescription:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    description:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    price: 39.9,
+    products: ["Eggplant Seedling", "Sili Seedling", "Tamato Seedling"],
+    images: {
+      "Eggplant Seedling": "/products/1a.png",
+      "Sili Seedling": "/products/1b.png",
+      "Tamato Seedling": "/products/1c.png",
+    },
     },
     {
       id: 2,
-      name: "Puma Ultra Warm Zip",
-      shortDescription:
-        "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-      description:
-        "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-      price: 59.9,
-      sizes: ["s", "m", "l", "xl"],
-      colors: ["gray", "green"],
-      images: { gray: "/products/2g.png", green: "/products/2gr.png" },
+    name: "Agricom Best Foods",
+    shortDescription:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    description:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    price: 59.9,
+    products: ["Adobo", "Kaldereta", "Kilawin"],
+    images: { "Adobo": "/products/2a.png", "Kaldereta": "/products/2b.png", "Kilawin": "/products/2c.png" },
     },
     {
       id: 3,
-      name: "Nike Air Essentials Pullover",
-      shortDescription:
-        "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-      description:
-        "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-      price: 69.9,
-      sizes: ["s", "m", "l"],
-      colors: ["green", "blue", "black"],
-      images: {
-        green: "/products/3gr.png",
-        blue: "/products/3b.png",
-        black: "/products/3bl.png",
+    name: "Agrismart Seedlings",
+    shortDescription:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    description:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    price: 69.9,
+    products: ["Ampalaya Seedling", "Sigarilyas Seedling"],
+    images: {
+      "Ampalaya Seedling": "/products/3a.png",
+      "Sigarilyas Seedling": "/products/3b.png",
       },
     },
     {
       id: 4,
-      name: "Nike Dri Flex T-Shirt",
-      shortDescription:
-        "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-      description:
-        "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-      price: 29.9,
-      sizes: ["s", "m", "l"],
-      colors: ["white", "pink"],
-      images: { white: "/products/4w.png", pink: "/products/4p.png" },
+    name: "Aquchickboy",
+    shortDescription:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    description:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    price: 29.9,
+    products: ["balut", "Salted Egg"],
+    images: { "balut": "/products/4a.png", "Salted Egg": "/products/4b.png" },
     },
     {
       id: 5,
-      name: "Under Armour StormFleece",
-      shortDescription:
-        "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-      description:
-        "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-      price: 49.9,
-      sizes: ["s", "m", "l"],
-      colors: ["red", "orange", "black"],
-      images: {
-        red: "/products/5r.png",
-        orange: "/products/5o.png",
-        black: "/products/5bl.png",
+    name: "RNR Food Products",
+    shortDescription:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    description:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    price: 49.9,
+    products: ["MC bbq","MC chili garlic", "MC garlic"],
+    images: {
+      "MC bbq": "/products/5a.png",
+      "MC chili garlic": "/products/5b.png",
+      "MC garlic": "/products/5c.png",
       },
     },
     {
       id: 6,
-      name: "Nike Air Max 270",
+      name: "Sagittarian",
       shortDescription:
         "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
       description:
         "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
       price: 59.9,
-      sizes: ["40", "42", "43", "44"],
-      colors: ["gray", "white"],
-      images: { gray: "/products/6g.png", white: "/products/6w.png" },
+      products: ["Chicken Adobo", "Chicken Afritada", "Chicken Kaldereta", "Corned Chicken"],
+      images: { "Chicken Adobo": "/products/6a.png", "Chicken Afritada": "/products/6b.png", "Chicken Kaldereta": "/products/6c.png", "Corned Chicken": "/products/6d.png" },
     },
     {
       id: 7,
-      name: "Nike Ultraboost Pulse ",
+      name: "Oteps Tinuno ",
       shortDescription:
         "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
       description:
         "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
       price: 69.9,
-      sizes: ["40", "42", "43"],
-      colors: ["gray", "pink"],
-      images: { gray: "/products/7g.png", pink: "/products/7p.png" },
+      products: ["Garlic Chili Oil", "Pickles", "Special Sauce"],
+      images: { "Garlic Chili Oil": "/products/7a.png", "Pickles": "/products/7b.png", "Special Sauce": "/products/7c.png" },
     },
     {
       id: 8,
-      name: "Levi’s Classic Denim",
+      name: "JBPMA Integrated Farm",
       shortDescription:
         "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
       description:
         "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
       price: 59.9,
-      sizes: ["s", "m", "l"],
-      colors: ["blue", "green"],
-      images: { blue: "/products/8b.png", green: "/products/8gr.png" },
+      products: ["Mango Juice", "Mango Pickles"],
+      images: { "Mango Juice": "/products/8b.png", "Mango Pickles": "/products/8gr.png" },
     },
   ];
 };

@@ -7,7 +7,7 @@ import {
   User2,
   ChevronUp,
   Plus,
-  Shirt,
+  Package,
   User,
   ShoppingBasket,
 } from "lucide-react";
@@ -77,8 +77,8 @@ const AppSidebar = () => {
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <Link href="/">
-                {/*<Image src="/logo.svg" alt="logo" width={20} height={20} />*/}
-                <span>Jah Dev</span>
+                {<Image src="/logo.png" alt="logo" width={20} height={20} />}
+                <span>CVSRCC</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -116,7 +116,7 @@ const AppSidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href="/products">
-                    <Shirt />
+                    <Package />
                     See All Products
                   </Link>
                 </SidebarMenuButton>

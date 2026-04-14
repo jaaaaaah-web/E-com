@@ -5,74 +5,73 @@ import { Badge } from "./ui/badge";
 const popularProducts = [
   {
     id: 1,
-    name: "Adidas CoreFit T-Shirt",
+    name: "Ac Plant",
     shortDescription:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 39.9,
     sizes: ["s", "m", "l", "xl", "xxl"],
-    colors: ["gray", "purple", "green"],
+    products: ["Eggplant Seedling", "Sili Seedling", "Tamato Seedling"],
     images: {
-      gray: "/products/1g.png",
-      purple: "/products/1p.png",
-      green: "/products/1gr.png",
+      "Eggplant Seedling": "/products/1a.png",
+      "Sili Seedling": "/products/1b.png",
+      "Tamato Seedling": "/products/1c.png",
     },
   },
   {
     id: 2,
-    name: "Puma Ultra Warm Zip",
+    name: "Agricom Best Foods",
     shortDescription:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 59.9,
     sizes: ["s", "m", "l", "xl"],
-    colors: ["gray", "green"],
-    images: { gray: "/products/2g.png", green: "/products/2gr.png" },
+    products: ["Adobo", "Kaldereta", "Kilawin"],
+    images: { "Adobo": "/products/2a.png", "Kaldereta": "/products/2b.png", "Kilawin": "/products/2c.png" },
   },
   {
     id: 3,
-    name: "Nike Air Essentials Pullover",
+    name: "Agrismart Seedlings",
     shortDescription:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 69.9,
     sizes: ["s", "m", "l"],
-    colors: ["green", "blue", "black"],
+    products: ["Ampalaya Seedling", "Sigarilyas Seedling"],
     images: {
-      green: "/products/3gr.png",
-      blue: "/products/3b.png",
-      black: "/products/3bl.png",
+      "Ampalaya Seedling": "/products/3a.png",
+      "Sigarilyas Seedling": "/products/3b.png",
     },
   },
   {
     id: 4,
-    name: "Nike Dri Flex T-Shirt",
+    name: "Aquchickboy",
     shortDescription:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 29.9,
     sizes: ["s", "m", "l"],
-    colors: ["white", "pink"],
-    images: { white: "/products/4w.png", pink: "/products/4p.png" },
+    products: ["balut", "Salted Egg"],
+    images: { "balut": "/products/4a.png", "Salted Egg": "/products/4b.png" },
   },
   {
     id: 5,
-    name: "Under Armour StormFleece",
+    name: "RNR Food Products",
     shortDescription:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     description:
       "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 49.9,
     sizes: ["s", "m", "l"],
-    colors: ["red", "orange", "black"],
+    products: ["MC bbq","MC chili garlic", "MC garlic"],
     images: {
-      red: "/products/5r.png",
-      orange: "/products/5o.png",
-      black: "/products/5bl.png",
+      "MC bbq": "/products/5a.png",
+      "MC chili garlic": "/products/5b.png",
+      "MC garlic": "/products/5c.png",
     },
   },
 ];
@@ -144,7 +143,7 @@ const CardList = ({ title }: { title: string }) => {
                     {item.name}
                   </CardTitle>
                 </CardContent>
-                <CardFooter className="p-0">${item.price}K</CardFooter>
+                <CardFooter className="p-0">₱{item.price}</CardFooter>
               </Card>
             ))
           : latestTransactions.map((item) => (
