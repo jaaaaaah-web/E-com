@@ -5,7 +5,10 @@ import Link from "next/link";
 import Filter from "./Filter";
 import Image from "next/image";
 
-type TemporaryProductType = Omit<ProductType, "sizes" | "colors"> & {
+type TemporaryProductType = Omit<
+  ProductType,
+  "sizes" | "colors" | "shortDescription" | "description"
+> & {
   flavors: string[];
 };
 
@@ -14,10 +17,6 @@ const products: TemporaryProductType[] = [
   {
     id: 1,
     name: "AC Plant",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 39.9,
     flavors: ["Eggplant Seedling", "Sili Seedling", "Tomato Seedling"],
     images: {
@@ -29,10 +28,6 @@ const products: TemporaryProductType[] = [
   {
     id: 2,
     name: "Agricom Best Foods",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 59.9,
     flavors: ["Adobo", "Kaldereta", "Kilawin"],
     images: { 
@@ -43,10 +38,6 @@ const products: TemporaryProductType[] = [
   {
     id: 3,
     name: "Agrismart Seedlings",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 69.9,
     flavors: ["Ampalaya Seedling", "Sigarilyas Seedling"],
     images: { 
@@ -56,10 +47,6 @@ const products: TemporaryProductType[] = [
   {
     id: 4,
     name: "Aquchickboy",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 29.9,
     flavors: ["Balut", "Salted Egg"],
     images: { 
@@ -70,10 +57,6 @@ const products: TemporaryProductType[] = [
   {
     id: 5,
     name: "RNR Food Products",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 49.9,
     flavors: ["MC_1", "MC_2", "MC_3"],
     images: { 
@@ -84,10 +67,6 @@ const products: TemporaryProductType[] = [
   {
     id: 6,
     name: "Sagittarian",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 59.9,
     flavors: ["Chicken Adobo", "Chicken Afritada", "Chicken Kaldereta", "Corned Chicken"],
     images: { 
@@ -99,10 +78,6 @@ const products: TemporaryProductType[] = [
   {
     id: 7,
     name: "Oteps Tinuno",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 69.9,
     flavors: ["Garlic Chili Oil", "Pickles", "Special Sauce"],
     images: { 
@@ -114,10 +89,6 @@ const products: TemporaryProductType[] = [
   {
     id: 8,
     name: "JBPMA Integrated Farm",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
     price: 59.9,
     flavors: ["Mango Juice", "Mango Pickles"],
     images: { 
@@ -193,6 +164,8 @@ const ProductList = ({
         {products.map((product) => {
           const productCardData: ProductType = {
             ...product,
+            shortDescription: "",
+            description: "",
             sizes: ["20ml"],
             colors: product.flavors,
           };

@@ -55,12 +55,10 @@ const ProductCard = ({ product }: { product: ProductType }) => {
       {/* PRODUCT DETAIL */}
       <div className="flex flex-col gap-4 p-4">
         <h1 className="font-medium">{product.name}</h1>
-        <p className="text-sm text-gray-500">{product.shortDescription}</p>
         {/* PRODUCT TYPES */}
         <div className="flex items-center gap-4 text-xs">
           {/* FLAVORS */}
           <div className="flex flex-col gap-1">
-            <span className="text-gray-500">Flavor</span>
             <div className="flex flex-wrap items-center gap-2">
               {product.colors.map((flavor) => (
                 <div
@@ -82,7 +80,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         </div>
         {/* PRICE AND ADD TO CART BUTTON */}
         <div className="flex items-center justify-between">
-          <p className="font-medium">${product.price.toFixed(2)}</p>
+          <p className="font-medium">₱{product.price.toFixed(2)}</p>
           <button
             onClick={handleAddToCart}
             className="ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-2"

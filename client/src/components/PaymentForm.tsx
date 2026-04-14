@@ -1,97 +1,89 @@
-import { PaymentFormInputs, paymentFormSchema } from "@/types";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowRight, ShoppingCart } from "lucide-react";
+import {
+  Circle,
+  Info,
+  ShoppingCart,
+} from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useState } from "react";
+
+type PaymentMethod = "cod" | "gcash" | null;
 
 const PaymentForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<PaymentFormInputs>({
-    resolver: zodResolver(paymentFormSchema),
-  });
+  const [selectedMethod, setSelectedMethod] = useState<PaymentMethod>("cod");
+  const [methodError, setMethodError] = useState("");
 
   const router = useRouter();
 
-  const handlePaymentForm: SubmitHandler<PaymentFormInputs> = (data) => {
-    
+  const handleCheckout = () => {
+    if (!selectedMethod) {
+      setMethodError("Please select a payment method.");
+      return;
+    }
+
+    setMethodError("");
+    router.push("/");
   };
 
   return (
-    <form
-      className="flex flex-col gap-4"
-      onSubmit={handleSubmit(handlePaymentForm)}
-    >
-      <div className="flex flex-col gap-1">
-        <label htmlFor="cardHolder" className="text-xs text-gray-500 font-medium">
-          Name on card
-        </label>
-        <input
-          className="border-b border-gray-200 py-2 outline-none text-sm"
-          type="text"
-          id="cardHolder"
-          placeholder="John Doe"
-          {...register("cardHolder")}
-        />
-        {errors.cardHolder && (
-          <p className="text-xs text-red-500">{errors.cardHolder.message}</p>
-        )}
+    <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
+      <div className="rounded-xl border border-gray-200 divide-y divide-gray-200">
+        <button
+          type="button"
+          className="w-full px-4 py-4 flex items-start justify-between text-left cursor-pointer"
+          onClick={() => {
+            setSelectedMethod("gcash");
+            setMethodError("");
+          }}
+        >
+          <div className="flex items-start gap-3">
+            <Image src="/gcash.png" alt="GCash" width={54} height={32} className="rounded-md" />
+            <div>
+              <p className="text-base text-gray-700">GCash</p>
+            </div>
+          </div>
+          <span
+            className={`mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border-2 ${
+              selectedMethod === "gcash"
+                ? "border-rose-500 text-rose-500"
+                : "border-gray-300 text-transparent"
+            }`}
+          >
+            <Circle className="w-3 h-3 fill-current" />
+          </span>
+        </button>
+
+        <button
+          type="button"
+          className="w-full px-4 py-4 flex items-center justify-between text-left"
+          onClick={() => {
+            setSelectedMethod("cod");
+            setMethodError("");
+          }}
+        >
+          <div className="flex items-center gap-3">
+            <Image src="/cod.png" alt="Cash on delivery" width={54} height={32} className="rounded-md" />
+            <div className="flex items-center gap-1.5">
+              <p className="text-xl text-gray-900">Cash on delivery</p>
+              <Info className="w-4 h-4 text-gray-500" />
+            </div>
+          </div>
+          <span
+            className={`mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border-2 ${
+              selectedMethod === "cod"
+                ? "border-rose-500 text-rose-500"
+                : "border-gray-300 text-transparent"
+            }`}
+          >
+            <Circle className="w-3 h-3 fill-current" />
+          </span>
+        </button>
+
       </div>
-      <div className="flex flex-col gap-1">
-        <label htmlFor="cardNumber" className="text-xs text-gray-500 font-medium">
-          Card Number
-        </label>
-        <input
-          className="border-b border-gray-200 py-2 outline-none text-sm"
-          type="text"
-          id="cardNumber"
-          placeholder="123456789123"
-          {...register("cardNumber")}
-        />
-        {errors.cardNumber && (
-          <p className="text-xs text-red-500">{errors.cardNumber.message}</p>
-        )}
-      </div>
-      <div className="flex flex-col gap-1">
-        <label htmlFor="expirationDate" className="text-xs text-gray-500 font-medium">
-          Expiration Date
-        </label>
-        <input
-          className="border-b border-gray-200 py-2 outline-none text-sm"
-          type="text"
-          id="expirationDate"
-          placeholder="01/32"
-          {...register("expirationDate")}
-        />
-        {errors.expirationDate && (
-          <p className="text-xs text-red-500">{errors.expirationDate.message}</p>
-        )}
-      </div>
-      <div className="flex flex-col gap-1">
-        <label htmlFor="cvv" className="text-xs text-gray-500 font-medium">
-          CVV
-        </label>
-        <input
-          className="border-b border-gray-200 py-2 outline-none text-sm"
-          type="text"
-          id="cvv"
-          placeholder="123"
-          {...register("cvv")}
-        />
-        {errors.cvv && (
-          <p className="text-xs text-red-500">{errors.cvv.message}</p>
-        )}
-      </div>
-      <div className='flex items-center gap-2 mt-4'>
-        <Image src="/cod.png" alt="COD" width={50} height={25} className="rounded-md"/>
-        <Image src="/cards.png" alt="Cards" width={50} height={25} className="rounded-md"/>
-        <Image src="/gcash.png" alt="Gcash" width={50} height={25} className="rounded-md"/>
-      </div>
+      {methodError && <p className="text-xs text-red-500">{methodError}</p>}
       <button
-        type="submit"
+        type="button"
+        onClick={handleCheckout}
         className="w-full bg-gray-800 hover:bg-gray-900 transition-all duration-300 text-white p-2 rounded-lg cursor-pointer flex items-center justify-center gap-2"
       >
         Checkout
