@@ -192,13 +192,6 @@ const ProductPage = async ({
             className="rounded-md"
           />
           <Image
-            src="/cards.png"
-            alt="cards"
-            width={50}
-            height={25}
-            className="rounded-md"
-          />
-          <Image
             src="/gcash.png"
             alt="gcash"
             width={50}

@@ -12,6 +12,11 @@ type PaymentMethod = "cod" | "gcash" | null;
 const PaymentForm = () => {
   const [selectedMethod, setSelectedMethod] = useState<PaymentMethod>("cod");
   const [methodError, setMethodError] = useState("");
+  const [gcashName, setGcashName] = useState("");
+  const [gcashReference, setGcashReference] = useState("");
+  const [proofFileName, setProofFileName] = useState("");
+  const [gcashError, setGcashError] = useState("");
+  const [qrSrc, setQrSrc] = useState("/gcash-qr.png");
 
   const router = useRouter();
 
@@ -21,7 +26,15 @@ const PaymentForm = () => {
       return;
     }
 
+    if (selectedMethod === "gcash") {
+      if (!gcashName.trim() || !gcashReference.trim() || !proofFileName) {
+        setGcashError("Please add your GCash username, reference number, and proof of payment.");
+        return;
+      }
+    }
+
     setMethodError("");
+    setGcashError("");
     router.push("/");
   };
 
@@ -34,6 +47,7 @@ const PaymentForm = () => {
           onClick={() => {
             setSelectedMethod("gcash");
             setMethodError("");
+            setGcashError("");
           }}
         >
           <div className="flex items-start gap-3">
@@ -59,6 +73,7 @@ const PaymentForm = () => {
           onClick={() => {
             setSelectedMethod("cod");
             setMethodError("");
+            setGcashError("");
           }}
         >
           <div className="flex items-center gap-3">
@@ -80,6 +95,53 @@ const PaymentForm = () => {
         </button>
 
       </div>
+      {selectedMethod === "gcash" && (
+        <div className="rounded-xl border border-gray-200 p-4 flex flex-col gap-4">
+          <div className="relative mx-auto w-full max-w-[320px] aspect-square rounded-lg border border-gray-200 overflow-hidden bg-gray-50">
+            <Image
+              src={qrSrc}
+              alt="GCash QR code"
+              fill
+              className="object-contain"
+              onError={() => setQrSrc("/qr.png")}
+            />
+          </div>
+          <p className="text-xs text-gray-500 text-center">
+            Scan this QR using GCash and upload your proof of payment below.
+          </p>
+          <div className="grid grid-cols-1 gap-3">
+            <input
+              type="text"
+              value={gcashName}
+              onChange={(e) => setGcashName(e.target.value)}
+              placeholder="GCash username"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            />
+            <input
+              type="text"
+              value={gcashReference}
+              onChange={(e) => setGcashReference(e.target.value)}
+              placeholder="Reference number"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            />
+            <label className="w-full rounded-lg border border-dashed border-gray-300 px-3 py-3 text-sm cursor-pointer hover:bg-gray-50 transition-colors">
+              <span className="text-gray-700">
+                {proofFileName ? `Proof of payment: ${proofFileName}` : "Upload proof of payment"}
+              </span>
+              <input
+                type="file"
+                accept="image/*,application/pdf"
+                className="hidden"
+                onChange={(e) => {
+                  const fileName = e.target.files?.[0]?.name || "";
+                  setProofFileName(fileName);
+                }}
+              />
+            </label>
+          </div>
+          {gcashError && <p className="text-xs text-red-500">{gcashError}</p>}
+        </div>
+      )}
       {methodError && <p className="text-xs text-red-500">{methodError}</p>}
       <button
         type="button"
