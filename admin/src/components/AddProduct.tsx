@@ -28,56 +28,16 @@ import {
 } from "@/components/ui/select";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
-import { Checkbox } from "./ui/checkbox";
 import { ScrollArea } from "./ui/scroll-area";
 
 const categories = [
-  "T-shirts",
-  "Shoes",
-  "Accessories",
-  "Bags",
-  "Dresses",
-  "Jackets",
-  "Gloves",
+  "Coffee and Tea",
+  "Fruit Juice and Wine",
+  "Ready to Eat Products",
+  "Chips",
 ] as const;
 
-const colors = [
-  "blue",
-  "green",
-  "red",
-  "yellow",
-  "purple",
-  "orange",
-  "pink",
-  "brown",
-  "gray",
-  "black",
-  "white",
-] as const;
-
-const sizes = [
-  "xs",
-  "s",
-  "m",
-  "l",
-  "xl",
-  "xxl",
-  "34",
-  "35",
-  "36",
-  "37",
-  "38",
-  "39",
-  "40",
-  "41",
-  "42",
-  "43",
-  "44",
-  "45",
-  "46",
-  "47",
-  "48",
-] as const;
+const options = ["Size", "Color"] as const;
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Product name is required!" }),
@@ -88,9 +48,10 @@ const formSchema = z.object({
   description: z.string().min(1, { message: "Description is required!" }),
   price: z.number().min(1, { message: "Price is required!" }),
   category: z.enum(categories),
-  sizes: z.array(z.enum(sizes)),
-  colors: z.array(z.enum(colors)),
-  images: z.record(z.enum(colors), z.string()),
+  options: z
+    .string()
+    .min(1, { message: "Options are required!" })
+    .max(120, { message: "Options are too long!" }),
 });
 
 const AddProduct = () => {
@@ -198,102 +159,18 @@ const AddProduct = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="sizes"
+                  name="options"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Sizes</FormLabel>
+                      <FormLabel>Options</FormLabel>
                       <FormControl>
-                        <div className="grid grid-cols-3 gap-4 my-2">
-                          {sizes.map((size) => (
-                            <div className="flex items-center gap-2" key={size}>
-                              <Checkbox
-                                id="size"
-                                checked={field.value?.includes(size)}
-                                onCheckedChange={(checked) => {
-                                  const currentValues = field.value || [];
-                                  if (checked) {
-                                    field.onChange([...currentValues, size]);
-                                  } else {
-                                    field.onChange(
-                                      currentValues.filter((v) => v !== size)
-                                    );
-                                  }
-                                }}
-                              />
-                              <label htmlFor="size" className="text-xs">
-                                {size}
-                              </label>
-                            </div>
-                          ))}
-                        </div>
+                        <Input
+                          {...field}
+                          placeholder="Enter different flavors or varieties of the product"
+                        />
                       </FormControl>
                       <FormDescription>
-                        Select the available sizes for the product.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="colors"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Colors</FormLabel>
-                      <FormControl>
-                        <div className="space-y-4">
-                          <div className="grid grid-cols-3 gap-4 my-2">
-                            {colors.map((color) => (
-                              <div
-                                className="flex items-center gap-2"
-                                key={color}
-                              >
-                                <Checkbox
-                                  id="color"
-                                  checked={field.value?.includes(color)}
-                                  onCheckedChange={(checked) => {
-                                    const currentValues = field.value || [];
-                                    if (checked) {
-                                      field.onChange([...currentValues, color]);
-                                    } else {
-                                      field.onChange(
-                                        currentValues.filter((v) => v !== color)
-                                      );
-                                    }
-                                  }}
-                                />
-                                <label
-                                  htmlFor="color"
-                                  className="text-xs flex items-center gap-2"
-                                >
-                                  <div
-                                    className="w-2 h-2 rounded-full"
-                                    style={{ backgroundColor: color }}
-                                  />
-                                  {color}
-                                </label>
-                              </div>
-                            ))}
-                          </div>
-                          {field.value && field.value.length > 0 && (
-                            <div className="mt-8 space-y-4">
-                              <p className="text-sm font-medium">Upload images for selected colors:</p>
-                              {field.value.map((color) => (
-                                <div className="flex items-center gap-2" key={color}>
-                                  <div
-                                    className="w-2 h-2 rounded-full"
-                                    style={{ backgroundColor: color }}
-                                  />
-                                  <span className="text-sm min-w-[60px]">{color}</span>
-                                  <Input type="file" accept="image/*" />
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </FormControl>
-                      <FormDescription>
-                        Select the available colors for the product.
+                        Enter available options ({options.join(" and ")}).
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
